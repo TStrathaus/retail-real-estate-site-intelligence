@@ -1,0 +1,33 @@
+# --- secrets ---
+.env
+.streamlit/secrets.toml
+
+# --- python ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- generated / cached (regenerable, large) ---
+data/cache/
+data/db/*.db
+streamlit_*.log
+*.log
+
+# Office lock files
+~$*
+
+# Generated artefacts — regenerate via sample_run.py / tools/
+outputs/
+
+# --- third-party reference material (copyright — do NOT publish) ---
+research/
+
+# --- editor/IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# docs/screenshots/ IS committed on purpose — curated showcase images for the README.

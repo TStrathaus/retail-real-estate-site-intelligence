@@ -1,0 +1,32 @@
+# Retail Site Intelligence — runtime dependencies
+# Python 3.11+ (developed on 3.12)
+
+# --- UI ---
+streamlit>=1.36
+streamlit-folium>=0.20
+folium>=0.17
+
+# --- geo / OSM ---
+osmnx>=2.0
+geopandas>=1.0
+shapely>=2.0
+pyproj>=3.6
+networkx>=3.0
+scikit-learn>=1.3        # OSMnx nearest_nodes (BallTree) for isochrones
+
+# --- data / finance ---
+pandas>=2.2
+numpy>=1.26
+numpy-financial>=1.0
+requests>=2.32
+python-dotenv>=1.0
+
+# --- charts / maps ---
+matplotlib>=3.8
+plotly>=5.20
+contextily>=1.5          # OSM tile basemap for PDF static maps
+
+# --- export ---
+reportlab>=4.2           # PDF Site Report + Deal Memo
+python-pptx>=1.0         # Product Overview deck
+

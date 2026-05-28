@@ -1,0 +1,185 @@
+{
+  "brand": "On",
+  "premium_tier": true,
+  "no_outlets": true,
+  "product_segments": ["running", "trail", "lifestyle", "tennis", "training", "apparel"],
+  "wholesale_partners": ["Ochsner Sport", "Ochsner Shoes", "Och Sport", "Intersport", "Athlete's Foot", "Zalando", "Kineo", "Run Store Zurich", "SportXX"],
+  "direct_competitors": ["Nike", "Adidas", "Hoka", "New Balance", "Asics", "Brooks", "Saucony", "Puma", "Salomon", "Mizuno", "Under Armour"],
+  "complementary_adjacencies": ["Lululemon", "Arc'teryx", "Patagonia", "Apple Store", "COS", "Aesop", "Sweaty Betty", "Mammut", "Fjällräven", "Jack Wolfskin", "Q36.5"],
+  "luxury_adjacencies": ["Louis Vuitton", "Hermès", "Loewe", "Bottega Veneta", "Prada", "Chanel"],
+  "luxury_shoe_brands": ["Salvatore Ferragamo", "Tod's", "Bally", "Berluti", "Church's", "Christian Louboutin", "Gucci", "Prada"],
+  "mass_market_shoe_brands": ["Dosenbach", "Deichmann", "Bata", "Vögele", "Day", "Skechers", "Schuh-Frenkel", "Walder", "Aeschbach", "Ochsner Shoes"],
+  "multi_brand_specialty_retailers": ["Foot Locker", "JD Sports", "Snipes", "Titolo", "DeeCee"],
+  "value_sport_retailers": ["Decathlon", "Sport 2000", "Sportmania"],
+  "premium_running_specialists": ["Run Store Zurich", "Q36.5", "Pomp it Up", "11Teamsports"],
+  "negative_environments": ["Aldi", "Lidl", "Primark", "H&M", "McDonald's", "KFC", "Burger King", "Tedi", "Action"],
+  "known_competitor_locations": [
+    {
+      "name": "Adidas Flagship",
+      "address": "Bahnhofstrasse 56, 8001 Zürich",
+      "lat": 47.3713,
+      "lon": 8.5389,
+      "brand": "Adidas",
+      "status": "active",
+      "as_of": "2026-05"
+    },
+    {
+      "name": "Nike Zürich (Sihlcity)",
+      "address": "Kalanderplatz 1, 8045 Zürich",
+      "lat": 47.3626,
+      "lon": 8.5241,
+      "brand": "Nike",
+      "status": "closed",
+      "as_of": "2026-03",
+      "note": "Closed March 2026. Important analyst signal — Sihlcity has shed mono-brand competitor flagships."
+    },
+    {
+      "name": "Puma Zürich (Sihlcity)",
+      "address": "Giesshübelstrasse 15, 8045 Zürich",
+      "lat": 47.3577,
+      "lon": 8.5237,
+      "brand": "Puma",
+      "status": "closed",
+      "as_of": "2025-11",
+      "note": "Closed November 2025. Sihlcity competitor exit pattern."
+    }
+  ],
+  "_known_hotels_doc": "Coordinates Nominatim-verified May 2026 (Storchen, Atlantis, FIVE re-geocoded; Marriott/Sheraton/Ambassador added). For hotels that Nominatim couldn't resolve (Atlantis, FIVE — odd hilltop addresses), coords are from public map data within ~200m of the building.",
+  "known_hotels": [
+    {"name": "Baur au Lac",                "address": "Talstrasse 1, 8001 Zürich",            "lat": 47.36711, "lon": 8.53934, "stars": 5, "tier": "ultra_luxury"},
+    {"name": "The Dolder Grand",           "address": "Kurhausstrasse 65, 8032 Zürich",       "lat": 47.37272, "lon": 8.57342, "stars": 5, "tier": "ultra_luxury"},
+    {"name": "Mandarin Oriental Savoy",    "address": "Poststrasse 12, 8001 Zürich",          "lat": 47.36970, "lon": 8.53980, "stars": 5, "tier": "ultra_luxury"},
+    {"name": "Park Hyatt Zurich",          "address": "Beethoven-Strasse 21, 8002 Zürich",    "lat": 47.36642, "lon": 8.53604, "stars": 5, "tier": "luxury"},
+    {"name": "Storchen Zurich",            "address": "Weinplatz 2, 8001 Zürich",             "lat": 47.37127, "lon": 8.54179, "stars": 5, "tier": "luxury"},
+    {"name": "Widder Hotel",               "address": "Rennweg 7, 8001 Zürich",               "lat": 47.37240, "lon": 8.53990, "stars": 5, "tier": "luxury"},
+    {"name": "La Réserve Eden au Lac",     "address": "Utoquai 45, 8008 Zürich",              "lat": 47.36280, "lon": 8.54740, "stars": 5, "tier": "luxury"},
+    {"name": "Hotel Schweizerhof Zurich",  "address": "Bahnhofplatz 7, 8001 Zürich",          "lat": 47.37690, "lon": 8.53940, "stars": 5, "tier": "luxury"},
+    {"name": "Zurich Marriott Hotel",      "address": "Neumühlequai 42, 8006 Zürich",         "lat": 47.38242, "lon": 8.54056, "stars": 5, "tier": "luxury"},
+    {"name": "Renaissance Zurich Tower",   "address": "Turbinenstrasse 20, 8005 Zürich",      "lat": 47.38820, "lon": 8.51430, "stars": 5, "tier": "luxury"},
+    {"name": "Atlantis by Giardino",       "address": "Döltschiweg 234, 8055 Zürich",         "lat": 47.34689, "lon": 8.50441, "stars": 5, "tier": "luxury"},
+    {"name": "FIVE Zurich",                "address": "Talwiesenstrasse 96, 8045 Zürich",     "lat": 47.36245, "lon": 8.51768, "stars": 5, "tier": "luxury"},
+    {"name": "Kameha Grand Zurich",        "address": "Dufaux-Strasse 1, 8152 Glattpark",     "lat": 47.42252, "lon": 8.55913, "stars": 5, "tier": "luxury"},
+    {"name": "Ambassador Hotel Zurich",    "address": "Falkenstrasse 6, 8008 Zürich",         "lat": 47.36434, "lon": 8.54701, "stars": 4, "tier": "boutique"},
+    {"name": "Sheraton Zurich Hotel",      "address": "Pfingstweidstrasse 100, 8005 Zürich",  "lat": 47.39073, "lon": 8.51012, "stars": 4, "tier": "business"},
+    {"name": "25hours Hotel Zurich West",  "address": "Pfingstweidstrasse 102, 8005 Zürich",  "lat": 47.39110, "lon": 8.50990, "stars": 4, "tier": "boutique"},
+    {"name": "B2 Boutique Hotel + Spa",    "address": "Brandschenkestrasse 152, 8002 Zürich", "lat": 47.36440, "lon": 8.52450, "stars": 4, "tier": "boutique"},
+    {"name": "Hotel Glockenhof",           "address": "Sihlstrasse 31, 8001 Zürich",          "lat": 47.37290, "lon": 8.53670, "stars": 4, "tier": "upscale"},
+    {"name": "Hotel Helmhaus",             "address": "Schifflände 30, 8001 Zürich",          "lat": 47.36920, "lon": 8.54410, "stars": 4, "tier": "upscale"}
+  ],
+  "multi_brand_known_locations": [
+    {"name": "Foot Locker Niederdorfstr.", "address": "Niederdorfstrasse 63-67, 8001 Zürich", "lat": 47.3743, "lon": 8.5438, "type": "multi_brand_specialty"},
+    {"name": "Foot Locker Seidengasse",   "address": "Seidengasse 20, 8001 Zürich",       "lat": 47.3733, "lon": 8.5400, "type": "multi_brand_specialty"},
+    {"name": "Foot Locker Löwenstrasse",  "address": "Löwenstrasse 1, 8001 Zürich",         "lat": 47.3744, "lon": 8.5390, "type": "multi_brand_specialty"},
+    {"name": "Snipes Rennweg",            "address": "Rennweg 56, 8001 Zürich",             "lat": 47.3724, "lon": 8.5388, "type": "multi_brand_specialty"},
+    {"name": "Snipes Niederdorf",         "address": "Niederdorfstrasse 21, 8001 Zürich",  "lat": 47.3727, "lon": 8.5424, "type": "multi_brand_specialty"},
+    {"name": "Snipes Bahnhof HB",         "address": "Bahnhofpassage, 8001 Zürich",        "lat": 47.3782, "lon": 8.5404, "type": "multi_brand_specialty"},
+    {"name": "Titolo",                    "address": "Niederdorfstrasse 10, 8001 Zürich",  "lat": 47.3727, "lon": 8.5430, "type": "multi_brand_specialty"}
+  ],
+  "existing_stores": [
+    {
+      "name": "On Labs HQ + Flagship",
+      "address": "Hardturmstrasse 183, 8005 Zürich",
+      "lat": 47.3934,
+      "lon": 8.5044,
+      "type": "hq_flagship"
+    },
+    {
+      "name": "On Flagship Limmatquai",
+      "address": "Limmatquai 28, 8001 Zürich",
+      "lat": 47.3731,
+      "lon": 8.5430,
+      "type": "flagship"
+    },
+    {
+      "name": "On HQ Office Förrlibuck",
+      "address": "Förrlibuckstrasse 190, 8005 Zürich",
+      "lat": 47.3893,
+      "lon": 8.5102,
+      "type": "office"
+    },
+    {
+      "name": "We Run Zürich (Partner @ Sihlcity)",
+      "address": "Kalanderplatz 1, 8045 Zürich",
+      "lat": 47.3626,
+      "lon": 8.5241,
+      "type": "partner_store"
+    }
+  ],
+  "demo_locations": [
+    {
+      "label": "🟢 Bahnhofstrasse 25 · gold standard",
+      "address": "Bahnhofstrasse 25, 8001 Zürich",
+      "expected_verdict": "go",
+      "tagline": "Premium-retail axis; tests the obvious right answer."
+    },
+    {
+      "label": "🟢 Falkenstrasse 28 · Stadelhofen luxury",
+      "address": "Falkenstrasse 28, 8008 Zürich",
+      "expected_verdict": "go",
+      "tagline": "Secondary luxury street; premium-quality, secondary-price tier."
+    },
+    {
+      "label": "🟡 Limmatquai 50 · cannibalization test",
+      "address": "Limmatquai 50, 8001 Zürich",
+      "expected_verdict": "check",
+      "tagline": "200 m from existing flagship; flood HIGH override fires."
+    },
+    {
+      "label": "🟡 Niederdorfstrasse 21 · Altstadt pedestrian",
+      "address": "Niederdorfstrasse 21, 8001 Zürich",
+      "expected_verdict": "check",
+      "tagline": "Pedestrian zone parallel to Limmatquai; Snipes on-site, cannibalization + flood HIGH override."
+    },
+    {
+      "label": "🔴 Sihlcity · flood demo (We Run partner)",
+      "address": "Kalanderplatz 1, 8045 Zürich",
+      "expected_verdict": "nogo",
+      "tagline": "BAFU flood VERY HIGH; mall-environment negatives; the canonical flood story."
+    },
+    {
+      "label": "🟢 Hardturmstrasse 183 · own-portfolio check",
+      "address": "Hardturmstrasse 183, 8005 Zürich",
+      "expected_verdict": "go",
+      "tagline": "On Labs HQ — cannibalization 100%, flood medium-low."
+    },
+    {
+      "label": "🟡 Glattzentrum · suburban mall",
+      "address": "Neue Winterthurerstrasse 99, 8304 Wallisellen",
+      "expected_verdict": "check",
+      "tagline": "Wallisellen growth corridor; mall negatives offset strong demographics."
+    },
+    {
+      "label": "🟢 The Circle · airport premium",
+      "address": "The Circle 60, 8058 Zürich Flughafen",
+      "expected_verdict": "go",
+      "tagline": "Travel retail; Riken-Yamamoto architecture; captive premium footfall."
+    },
+    {
+      "label": "🟡 Uster Bahnhofstrasse · growth periphery",
+      "address": "Bahnhofstrasse 10, 8610 Uster",
+      "expected_verdict": "check",
+      "tagline": "ZH growth municipality; wholesale-partner town, premium-threshold borderline."
+    },
+    {
+      "label": "🔴 Langstrasse 78 · deliberate No-Go",
+      "address": "Langstrasse 78, 8004 Zürich",
+      "expected_verdict": "nogo",
+      "tagline": "Nightlife / fast-food / discounter clusters all fire; PEI fails threshold."
+    },
+    {
+      "label": "🟡 Winterthur Marktgasse · second-tier city",
+      "address": "Marktgasse 35, 8400 Winterthur",
+      "expected_verdict": "check",
+      "tagline": "Switzerland's 6th-largest city; strongest growth among major munis."
+    }
+  ],
+  "cannibalization_threshold_pct": 40,
+  "min_premium_env_index": 5,
+  "typical_capex_per_sqm_chf": 4000,
+  "typical_store_sqm": 200,
+  "brand_colors": {
+    "primary": "#1A1A1A",
+    "secondary": "#FFFFFF",
+    "accent": "#00C853"
+  }
+}

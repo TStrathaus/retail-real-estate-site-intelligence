@@ -1,0 +1,6 @@
+# Dev-only tooling (not needed to run the app)
+-r requirements.txt
+
+# Headless-browser screenshot capture for the product-overview PPT.
+# After install:  python -m playwright install chromium
+playwright>=1.40
