@@ -5,8 +5,8 @@ daily workflow of a premium sport-lifestyle brand — **site selection, financia
 modelling, and portfolio management** — using only open data (OpenStreetMap, Swiss
 BFS, BAFU, geo.admin.ch).
 
-Scoped around **On** (the Swiss running/lifestyle
-brand). The methodology generalises to any retailer by swapping one JSON config file.
+Scoped around **On** (the Swiss running/lifestyle brand) as a reference, but the
+methodology generalises to any retailer by swapping one JSON config file.
 
 > Reference products it emulates the *thinking* of: GrowthFactor, Placer.ai, SiteZeus.
 > This is an open-source prototype, not an enterprise system.
@@ -114,10 +114,10 @@ docs/screenshots/       curated README visuals
 
 ## Disclaimer
 
-Independent project. **Not affiliated with, endorsed by, or representing
-On AG.** "On" is used solely as a reference brand to scope a realistic premium-retail analysis.
-All competitor/hotel/store data is from public sources or analyst-curated estimates,
-provided as-is. No warranty.
+Independent project. **Not affiliated with, endorsed by, or representing On AG.**
+"On" is used solely as a reference brand to scope a realistic premium-retail
+analysis. All competitor/hotel/store data is from public sources or
+analyst-curated estimates, provided as-is. No warranty.
 
 ## License
 
