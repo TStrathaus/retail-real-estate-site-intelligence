@@ -11,6 +11,11 @@ methodology generalises to any retailer by swapping one JSON config file.
 > Reference products it emulates the *thinking* of: GrowthFactor, Placer.ai, SiteZeus.
 > This is an open-source prototype, not an enterprise system.
 
+**🔗 Live showcase (static):** <https://tstrathaus.github.io/retail-real-estate-site-intelligence/>
+— a non-interactive walk-through of one analysed location (Niederdorfstrasse 21, Zürich)
+with all six steps and all twelve map layers. The interactive tool runs locally
+([quick start](#quick-start)).
+
 ---
 
 ## What it does
