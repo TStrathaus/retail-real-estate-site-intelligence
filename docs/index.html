@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retail Site Intelligence — Static Showcase</title>
+<meta name="description" content="Retail real-estate site-selection tool — site scoring, flood risk, leasehold pro-forma. Static snapshot of one analysed location (Niederdorfstrasse 21, Zürich).">
+<style>
+  :root{ --ink:#1A1A1A; --accent:#00C853; --muted:#555; --line:#E2E2E2; --bg:#FFFFFF; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        color:var(--ink); background:var(--bg); line-height:1.55; }
+  a{ color:#0a7d3a; }
+  .wrap{ max-width:980px; margin:0 auto; padding:0 20px; }
+  header{ background:var(--ink); color:#fff; padding:54px 0 46px; }
+  header .wrap{ }
+  .badge{ display:inline-block; background:var(--accent); color:#06281a; font-weight:700;
+           font-size:.72rem; letter-spacing:.08em; padding:5px 11px; border-radius:13px; text-transform:uppercase; }
+  h1{ font-size:2.5rem; margin:.5rem 0 .3rem; line-height:1.1; }
+  .tag{ font-size:1.12rem; color:#cfcfcf; max-width:680px; }
+  .snapshot-note{ margin-top:22px; background:rgba(255,255,255,.08); border-left:4px solid var(--accent);
+                  padding:14px 18px; border-radius:6px; font-size:.95rem; color:#eaeaea; max-width:740px; }
+  .snapshot-note b{ color:#fff; }
+  section{ padding:40px 0; border-bottom:1px solid var(--line); }
+  h2{ font-size:1.5rem; margin:0 0 6px; }
+  h2 .accent{ color:var(--accent); }
+  .lead{ color:var(--muted); margin:0 0 22px; }
+  figure{ margin:0 0 10px; }
+  figure img{ width:100%; height:auto; border:1px solid var(--line); border-radius:8px; display:block;
+              box-shadow:0 2px 10px rgba(0,0,0,.06); }
+  figcaption{ font-size:.86rem; color:var(--muted); margin-top:8px; }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  @media(max-width:720px){ .grid2,.grid3{ grid-template-columns:1fr; } h1{ font-size:2rem; } }
+  ul.feat{ columns:2; column-gap:34px; padding-left:18px; margin:0; }
+  ul.feat li{ margin:4px 0; break-inside:avoid; }
+  @media(max-width:720px){ ul.feat{ columns:1; } }
+  pre{ background:#0f1115; color:#e6e6e6; padding:16px 18px; border-radius:8px; overflow:auto; font-size:.86rem; }
+  code{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  .pill{ display:inline-block; border:1px solid var(--line); border-radius:20px; padding:4px 12px;
+         margin:3px 4px 0 0; font-size:.82rem; color:var(--muted); }
+  .cta{ display:inline-block; background:var(--ink); color:#fff; text-decoration:none; font-weight:600;
+        padding:11px 20px; border-radius:7px; margin-top:6px; }
+  .cta.alt{ background:#fff; color:var(--ink); border:1.5px solid var(--ink); margin-left:8px; }
+  footer{ padding:34px 0 60px; color:var(--muted); font-size:.85rem; }
+  .kpis{ display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0; }
+  .kpi{ flex:1 1 150px; border:1px solid var(--line); border-left:4px solid var(--accent);
+        border-radius:8px; padding:12px 14px; }
+  .kpi .v{ font-size:1.5rem; font-weight:700; }
+  .kpi .l{ font-size:.78rem; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">Static snapshot · one location</span>
+    <h1>Retail Site Intelligence</h1>
+    <p class="tag">A tool to support retail real-estate location search — site scoring,
+       flood-risk, footfall, and leasehold pro-forma — built on open data
+       (OpenStreetMap · Swiss BFS · BAFU). Reference brand: On.</p>
+    <div class="snapshot-note">
+      <b>This page is a static showcase, not the live tool.</b> The screenshots below
+      capture a single analysed location — <b>Niederdorfstrasse 21, 8001 Zürich</b>
+      (Altstadt, ~200&nbsp;m from On's Limmatquai flagship). The actual tool is an
+      interactive Streamlit application that runs live OSM/BFS/BAFU queries for any
+      address — clone &amp; run it locally (instructions at the bottom).
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What it does</h2>
+    <p class="lead">A seven-step funnel that mirrors a retail analyst's daily workflow,
+       from a broker lead to a deal memo — every score fully inspectable (glass-box).</p>
+    <ul class="feat">
+      <li><b>Location</b> — geocode + map + 10-min walking isochrone + BAFU flood check</li>
+      <li><b>Market</b> — BFS demographics, Kaufkraft, premium-environment signal</li>
+      <li><b>Proximity</b> — brand-aware OSM POI classification (sport / symbiose / competitor …)</li>
+      <li><b>Footfall</b> — amenity-richness Walk Score + transit access</li>
+      <li><b>Site Score</b> — weighted 0-100, flood penalty, sustainability adjustment</li>
+      <li><b>Leasehold Pro-Forma</b> — 5-yr DCF, NPV/IRR, occupancy-cost ratio</li>
+      <li><b>Export</b> — PDF site report, deal memo, PowerPoint overview</li>
+      <li><b>Brand-neutral</b> — swap one JSON config to retarget any retailer</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Step 1 — <span class="accent">Location &amp; flood risk</span></h2>
+    <p class="lead">Geocoded candidate with the BAFU surface-runoff hazard overlay and
+       curated premium-hotel layer. Niederdorfstrasse 21 sits inside the Sihl/Limmat
+       HQ100 flood perimeter.</p>
+    <figure>
+      <img src="screenshots/step1_location.png" alt="Step 1 location map with flood and hotel overlays">
+      <figcaption>Candidate · 500&nbsp;m search radius · BAFU flood WMS · curated 5★/4★ hotels.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Step 5 — <span class="accent">Glass-Box Site Score</span></h2>
+    <p class="lead">Every dimension normalised 0-100 before weighting, with flood penalty
+       and Bechtiger-2024 / ESI sustainability adjustment applied transparently.</p>
+    <figure>
+      <img src="screenshots/step5_score.png" alt="Step 5 glass-box score breakdown">
+      <figcaption>Per-dimension contribution breakdown · Premium Environment Index · verdict.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Proximity layers <span class="accent">(examples)</span></h2>
+    <p class="lead">Each analytical overlay is an independent, toggleable map layer.
+       Three of twelve, captured at Niederdorfstrasse 21.</p>
+    <div class="grid3">
+      <figure>
+        <img src="screenshots/layer_flood.jpg" alt="BAFU flood hazard layer">
+        <figcaption>🌊 BAFU flood hazard</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/layer_competitors.jpg" alt="Competitor catchment layer">
+        <figcaption>⚔️ Competitor catchments (200&nbsp;m)</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/layer_shop_density.jpg" alt="Shop density heatmap">
+        <figcaption>🔥 Shop-density heatmap</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Run the interactive tool locally</h2>
+    <p class="lead">The live app analyses any address — this static page only shows one.</p>
+<pre><code>git clone https://github.com/TStrathaus/retail-real-estate-site-intelligence.git
+cd retail-real-estate-site-intelligence
+python -m venv .venv &amp;&amp; source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env                                 # set NOMINATIM_USER_AGENT
+streamlit run app.py</code></pre>
+    <p>
+      <a class="cta" href="https://github.com/TStrathaus/retail-real-estate-site-intelligence">View on GitHub</a>
+      <a class="cta alt" href="https://github.com/TStrathaus/retail-real-estate-site-intelligence/blob/main/SCORING.md">Scoring methodology</a>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Tech &amp; data</h2>
+    <div>
+      <span class="pill">Streamlit</span><span class="pill">OSMnx</span><span class="pill">GeoPandas</span>
+      <span class="pill">Folium</span><span class="pill">matplotlib</span><span class="pill">plotly</span>
+      <span class="pill">contextily</span><span class="pill">ReportLab</span><span class="pill">python-pptx</span>
+    </div>
+    <div style="margin-top:10px">
+      <span class="pill">OpenStreetMap</span><span class="pill">BFS STATPOP</span>
+      <span class="pill">BAFU flood hazard</span><span class="pill">ESI / CCRS</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Disclaimer.</b> Independent project. Not affiliated with, endorsed by, or
+       representing On AG; "On" is used solely as a reference brand. Competitor / hotel /
+       store data is from public sources or analyst-curated estimates, provided as-is.</p>
+    <p>Map data © OpenStreetMap contributors (ODbL) · Swiss federal data under
+       opendata.swiss terms · Code: MIT.</p>
+  </div>
+</footer>
+
+</body>
+</html>
