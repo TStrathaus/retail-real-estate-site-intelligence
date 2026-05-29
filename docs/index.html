@@ -27,8 +27,21 @@
   .lead{ color:var(--muted); margin:0 0 22px; }
   figure{ margin:0 0 10px; }
   figure img{ width:100%; height:auto; border:1px solid var(--line); border-radius:8px; display:block;
-              box-shadow:0 2px 10px rgba(0,0,0,.06); }
+              box-shadow:0 2px 10px rgba(0,0,0,.06); cursor:zoom-in;
+              transition:box-shadow .15s ease, transform .15s ease; }
+  figure img:hover{ box-shadow:0 4px 18px rgba(0,0,0,.16); transform:translateY(-2px); }
   figcaption{ font-size:.86rem; color:var(--muted); margin-top:8px; }
+  /* full-screen lightbox */
+  .lightbox{ position:fixed; inset:0; background:rgba(15,17,21,.92); display:none;
+             align-items:center; justify-content:center; z-index:1000; padding:32px; cursor:zoom-out; }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 10px 40px rgba(0,0,0,.5);
+                 cursor:default; }
+  .lightbox .cap{ position:absolute; bottom:18px; left:0; right:0; text-align:center;
+                  color:#eaeaea; font-size:.9rem; padding:0 24px; }
+  .lightbox .close{ position:absolute; top:16px; right:22px; color:#fff; font-size:2rem; line-height:1;
+                    background:none; border:none; cursor:pointer; opacity:.8; }
+  .lightbox .close:hover{ opacity:1; }
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
   .grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
   @media(max-width:720px){ .grid2,.grid3{ grid-template-columns:1fr; } h1{ font-size:2rem; } }
@@ -272,6 +285,46 @@ streamlit run app.py</code></pre>
        opendata.swiss terms · Code: MIT.</p>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="close" id="lbClose" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+
+  function open(img){
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt || '';
+    var fig = img.closest('figure');
+    var cap = fig ? fig.querySelector('figcaption') : null;
+    lbCap.textContent = cap ? cap.textContent.trim() : (img.alt || '');
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+  }
+  function close(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+  }
+
+  document.querySelectorAll('figure img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img); });
+  });
+  lb.addEventListener('click', function(e){
+    if (e.target !== lbImg) close();
+  });
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && lb.classList.contains('open')) close();
+  });
+})();
+</script>
 
 </body>
 </html>
