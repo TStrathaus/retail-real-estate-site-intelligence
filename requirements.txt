@@ -29,4 +29,3 @@ contextily>=1.5          # OSM tile basemap for PDF static maps
 # --- export ---
 reportlab>=4.2           # PDF Site Report + Deal Memo
 python-pptx>=1.0         # Product Overview deck
-

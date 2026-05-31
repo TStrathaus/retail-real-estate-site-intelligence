@@ -4,7 +4,6 @@ This document explains **how each kind of retail neighbour is treated by the Sit
 Score**, and why. The scoring rules are tuned for **On's premium DTC positioning**;
 the same engine generalises to other retailers by editing `data/config/on_brand.json`.
 
-
 ---
 
 ## 1. The 12-step classification cascade

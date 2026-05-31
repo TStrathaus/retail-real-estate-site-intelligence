@@ -55,7 +55,7 @@ Every analytical layer is a toggleable overlay (all off by default):
 
 | Flood-risk layer | Competitor catchments | Shop-density heatmap |
 |---|---|---|
-| ![Flood](docs/screenshots/layer_flood.jpg) | ![Competitors](docs/screenshots/layer_competitors.jpg) | ![Shops](docs/screenshots/layer_shop_density.jpg) |
+| ![Flood](docs/screenshots/proximity_01_bafu_flood.jpg) | ![Competitors](docs/screenshots/proximity_09_competitor_circles.jpg) | ![Shops](docs/screenshots/proximity_04_shop_density.jpg) |
 
 ---
 

@@ -24,6 +24,15 @@ outputs/
 # --- third-party reference material (copyright — do NOT publish) ---
 research/
 
+# --- local-only working notes (kept on disk, not published) ---
+# Only README.md + SCORING.md ship at repo root; all other root docs stay local.
+/*.md
+!/README.md
+!/SCORING.md
+/*.txt
+!/requirements.txt
+!/requirements-dev.txt
+
 # --- editor/IDE ---
 .DS_Store
 Thumbs.db
