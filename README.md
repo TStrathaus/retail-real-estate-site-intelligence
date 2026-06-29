@@ -113,6 +113,7 @@ data/config/            on_brand.json (brand config) · score_weights.json
 data/bfs/               seeded Swiss demographic CSV
 tools/                  Playwright screenshot pipeline
 docs/screenshots/       curated README visuals
+report/                 published PDF artefacts (Product Overview — Niederdorf proximity layers)
 ```
 
 ---
