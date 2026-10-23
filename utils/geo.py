@@ -23,6 +23,12 @@ USER_AGENT = os.getenv(
     "retail-site-intelligence (contact: t.strathaus@mail.ch)",
 )
 
+ESRI_LIGHT_GRAY_URL = (
+    "https://server.arcgisonline.com/ArcGIS/rest/services/"
+    "Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+)
+ESRI_LIGHT_GRAY_ATTR = "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors"
+
 
 # ---------------------------------------------------------------------------
 # Geocoding
@@ -185,9 +191,18 @@ def build_site_map(lat: float, lon: float, radius_m: int = 500,
     m = folium.Map(
         location=[lat, lon],
         zoom_start=16 if radius_m <= 500 else 15,
-        tiles="CartoDB positron",
+        tiles=None,
         control_scale=True,
     )
+    # Esri Light Gray — keyless (CARTO basemaps now require an API key).
+    # Native tiles stop at z16; Leaflet upscales beyond that.
+    folium.TileLayer(
+        tiles=ESRI_LIGHT_GRAY_URL,
+        attr=ESRI_LIGHT_GRAY_ATTR,
+        name="Esri Light Gray",
+        max_native_zoom=16,
+        max_zoom=19,
+    ).add_to(m)
 
     # Candidate site pin
     folium.CircleMarker(

@@ -201,7 +201,7 @@ def chart_static_map(pois: list, lat: float, lon: float,
     """Static context map for PDF/PPT.
 
     Backdrop preference order:
-      1. **contextily OSM tile basemap** (CartoDB Positron) — proper map
+      1. **contextily tile basemap** (Esri Light Gray) — proper map
          with streets, building footprints, labels. Fetches Web-Mercator
          tiles at the right zoom level for the search radius.
       2. **OSMnx walking-network** — fallback if contextily fails (no
@@ -262,12 +262,14 @@ def chart_static_map(pois: list, lat: float, lon: float,
         ax.set_ylim(cy - bound, cy + bound)
         ax.set_aspect("equal")
 
-        # Add the OSM tile basemap. Auto-zoom; CartoDB Positron is light
-        # and analyst-readable.
+        # Add the tile basemap. Esri Light Gray is light and analyst-
+        # readable, and keyless (CARTO now requires an API key). Its
+        # native tiles stop at z16, so cap the zoom.
         try:
             ctx.add_basemap(
-                ax, source=ctx.providers.CartoDB.Positron,
+                ax, source=ctx.providers.Esri.WorldGrayCanvas,
                 crs="EPSG:3857", attribution_size=5,
+                zoom=16 if radius_m <= 500 else 15 if radius_m <= 1000 else 14,
             )
         except Exception:
             ax.set_facecolor("#FAFAFA")
