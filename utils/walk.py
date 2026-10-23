@@ -21,7 +21,7 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
-from utils.config import CACHE_DIR
+from utils.overpass import configure_osmnx
 from utils.geo import haversine_m
 from utils.osm import distance_multiplier
 
@@ -101,8 +101,7 @@ def fetch_walk_amenities(lat: float, lon: float, radius_m: int = 1000):
         import osmnx as ox
     except ImportError:
         return None
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
+    configure_osmnx()
     try:
         gdf = ox.features_from_point((lat, lon), tags=WALK_AMENITY_TAGS, dist=radius_m)
     except Exception:
@@ -132,9 +131,7 @@ def compute_walk_score(lat: float, lon: float, radius_m: int = 1000) -> WalkScor
     except ImportError as e:
         raise RuntimeError(f"osmnx not installed: {e}") from e
 
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
-    ox.settings.log_console = False
+    configure_osmnx()
 
     gdf = ox.features_from_point((lat, lon), tags=WALK_AMENITY_TAGS, dist=radius_m)
     cat_counts: dict[str, int] = {k: 0 for k in WALK_CATEGORY_WEIGHTS}

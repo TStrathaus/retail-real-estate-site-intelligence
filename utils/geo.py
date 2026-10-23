@@ -15,7 +15,7 @@ import requests
 import streamlit as st
 from dotenv import load_dotenv
 
-from utils.config import CACHE_DIR
+from utils.overpass import configure_osmnx
 
 load_dotenv()
 USER_AGENT = os.getenv(
@@ -109,9 +109,7 @@ def walking_isochrone(lat: float, lon: float, minutes: int = 10,
     except ImportError:
         return None
 
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
-    ox.settings.log_console = False
+    configure_osmnx()
 
     max_dist = int(minutes * (walking_kmh / 60) * 1000 * 1.4)  # 40% safety margin
     try:

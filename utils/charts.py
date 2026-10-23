@@ -275,9 +275,8 @@ def chart_static_map(pois: list, lat: float, lon: float,
         # Fallback — OSMnx network in lat/lon
         try:
             import osmnx as ox
-            from utils.config import CACHE_DIR
-            ox.settings.use_cache = True
-            ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
+            from utils.overpass import configure_osmnx
+            configure_osmnx()
             G = ox.graph_from_point((lat, lon), dist=radius_m, network_type="walk")
             ox.plot.plot_graph(
                 G, ax=ax, show=False, close=False,

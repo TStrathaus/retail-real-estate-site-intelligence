@@ -28,7 +28,7 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
-from utils.config import CACHE_DIR
+from utils.overpass import configure_osmnx
 from utils.geo import haversine_m
 
 # ---------------------------------------------------------------------------
@@ -194,8 +194,7 @@ def fetch_running_infrastructure(lat: float, lon: float, radius_m: int):
         import osmnx as ox
     except ImportError:
         return None
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
+    configure_osmnx()
     tags = {
         "route":   ["running", "hiking", "foot"],
         "leisure": ["track", "park", "nature_reserve"],
@@ -221,8 +220,7 @@ def fetch_transit_stops(lat: float, lon: float, radius_m: int):
         import osmnx as ox
     except ImportError:
         return None
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
+    configure_osmnx()
     tags = {
         "railway": ["station", "halt", "tram_stop"],
         "highway": ["bus_stop"],
@@ -276,8 +274,7 @@ def fetch_all_shops(lat: float, lon: float, radius_m: int):
         import osmnx as ox
     except ImportError:
         return None
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
+    configure_osmnx()
     try:
         gdf = ox.features_from_point(
             (lat, lon), tags={"shop": True}, dist=radius_m,
@@ -331,8 +328,7 @@ def fetch_pedestrian_paths(lat: float, lon: float, radius_m: int):
         import osmnx as ox
     except ImportError:
         return None
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
+    configure_osmnx()
     tags = {
         "highway": ["pedestrian", "living_street", "footway", "path", "cycleway"],
         "area:highway": ["pedestrian"],
@@ -362,9 +358,7 @@ def fetch_osm_features(lat: float, lon: float, radius_m: int) -> pd.DataFrame:
     except ImportError as e:
         raise RuntimeError(f"osmnx not installed: {e}") from e
 
-    ox.settings.use_cache = True
-    ox.settings.cache_folder = str(CACHE_DIR / "osmnx")
-    ox.settings.log_console = False
+    configure_osmnx()
 
     gdf = ox.features_from_point((lat, lon), tags=OSM_TAGS, dist=radius_m)
     if gdf is None or len(gdf) == 0:

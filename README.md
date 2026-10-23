@@ -11,9 +11,12 @@ methodology generalises to any retailer by swapping one JSON config file.
 > Reference products it emulates the *thinking* of: GrowthFactor, Placer.ai, SiteZeus.
 > This is an open-source prototype, not an enterprise system.
 
+**🚀 Live app:** <https://retail-real-estate-site-intelligence-strathaus.streamlit.app> — the interactive tool, hosted on Streamlit Community Cloud
+(free tier: may take ~30 s to wake up after inactivity).
+
 **🔗 Live showcase (static):** <https://tstrathaus.github.io/retail-real-estate-site-intelligence/>
 — a non-interactive walk-through of one analysed location (Niederdorfstrasse 21, Zürich)
-with all six steps and all twelve map layers. The interactive tool runs locally
+with all six steps and all twelve map layers. The interactive tool also runs locally
 ([quick start](#quick-start)).
 
 ---
@@ -111,7 +114,8 @@ utils/                  geocoding · OSM classification · scoring · DCF · flo
                         sustainability · charts · PDF/PPT export
 data/config/            on_brand.json (brand config) · score_weights.json
 data/bfs/               seeded Swiss demographic CSV
-tools/                  Playwright screenshot pipeline
+data/osm_seed/          pre-fetched OSM responses for the demo presets (hosted app)
+tools/                  Playwright screenshot pipeline · OSM seed-cache warmer
 docs/screenshots/       curated README visuals
 report/                 published PDF artefacts (Product Overview — Niederdorf proximity layers)
 ```

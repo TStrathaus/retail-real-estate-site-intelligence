@@ -77,8 +77,9 @@
       capture a single analysed location — <b>Niederdorfstrasse 21, 8001 Zürich</b>
       (Altstadt, ~200&nbsp;m from On's Limmatquai flagship). The actual tool is an
       interactive Streamlit application that runs live OSM/BFS/BAFU queries for any
-      address — clone &amp; run it locally (instructions at the bottom).
+      address — try it online or clone &amp; run it locally (instructions at the bottom).
     </div>
+    <p style="margin-top:16px"><a class="cta" href="https://retail-real-estate-site-intelligence-strathaus.streamlit.app" target="_blank" rel="noopener">Launch live app →</a></p>
   </div>
 </header>
 
@@ -246,8 +247,10 @@
 
 <section>
   <div class="wrap">
-    <h2>Run the interactive tool locally</h2>
-    <p class="lead">The live app analyses any address — this static page only shows one.</p>
+    <h2>Run the interactive tool</h2>
+    <p class="lead">The live app analyses any address — this static page only shows one.
+       Open the <a href="https://retail-real-estate-site-intelligence-strathaus.streamlit.app" target="_blank" rel="noopener">hosted version</a>
+       (free tier: may take ~30&nbsp;s to wake up) or run it locally:</p>
 <pre><code>git clone https://github.com/TStrathaus/retail-real-estate-site-intelligence.git
 cd retail-real-estate-site-intelligence
 python -m venv .venv &amp;&amp; source .venv/bin/activate   # Windows: .venv\Scripts\activate
@@ -255,7 +258,8 @@ pip install -r requirements.txt
 cp .env.example .env                                 # set NOMINATIM_USER_AGENT
 streamlit run app.py</code></pre>
     <p>
-      <a class="cta" href="https://github.com/TStrathaus/retail-real-estate-site-intelligence">View on GitHub</a>
+      <a class="cta" href="https://retail-real-estate-site-intelligence-strathaus.streamlit.app" target="_blank" rel="noopener">Launch live app</a>
+      <a class="cta alt" href="https://github.com/TStrathaus/retail-real-estate-site-intelligence">View on GitHub</a>
       <a class="cta alt" href="https://github.com/TStrathaus/retail-real-estate-site-intelligence/blob/main/SCORING.md">Scoring methodology</a>
     </p>
   </div>
