@@ -12,9 +12,10 @@ methodology generalises to any retailer by swapping one JSON config file.
 > This is an open-source prototype, not an enterprise system.
 
 **🚀 Live app:** <https://retail-real-estate-site-intelligence-strathaus.streamlit.app> — the interactive tool, hosted on Streamlit Community Cloud
-(free tier: may take ~30 s to wake up after inactivity). For the fastest demo, pick a
-**walk-through preset** in Step 1 — their OpenStreetMap data ships pre-fetched, while
-free-text addresses depend on the (often busy) public Overpass servers.
+(free tier: may take ~30 s to wake up after inactivity). The hosted demo is limited to
+the 11 **walk-through presets** in Step 1 (500 m radius) — their OpenStreetMap data ships
+pre-fetched, so it doesn't depend on the often-busy public Overpass servers. Run the tool
+locally to analyse any address (`PRESETS_ONLY=1/0` forces the mode either way).
 
 **🔗 Live showcase (static):** <https://tstrathaus.github.io/retail-real-estate-site-intelligence/>
 — a non-interactive walk-through of one analysed location (Niederdorfstrasse 21, Zürich)
