@@ -23,6 +23,7 @@ from streamlit_folium import st_folium
 import os
 
 from utils.bfs import lookup_municipality
+from utils.config import presets_only_mode
 from utils.export import deal_memo_pdf, site_report_pdf
 from utils.financial import ProForma, ProFormaInputs, build_proforma, build_scenarios
 from utils.flood import FloodRisk, check_flood_risk
@@ -168,7 +169,11 @@ def _step1_location(brand: dict, _weights: dict) -> None:
     st.caption("Geocode the candidate site. Flood-risk check runs automatically (BAFU).")
 
     # ----- Preset locations (walk-through demo) -----
+    # Hosted demo: presets only — their OSM data is seeded at 500 m, free-text
+    # addresses would depend on the (often overloaded) public Overpass servers.
+    presets_only = presets_only_mode()
     demo_locations = brand.get("demo_locations") or []
+    preset_label, chosen, load_preset = "— select —", None, False
     if demo_locations:
         with st.container(border=True):
             cols = st.columns([4, 1])
@@ -188,39 +193,47 @@ def _step1_location(brand: dict, _weights: dict) -> None:
                     st.caption(f"📋 {chosen['tagline']}")
             with cols[1]:
                 load_preset = st.button(
-                    "Load preset →",
+                    "🔍 Analyse site →" if presets_only else "Load preset →",
                     use_container_width=True, type="primary",
                     disabled=(preset_label == "— select —"),
                 )
-            if load_preset and preset_label != "— select —":
-                chosen = next(
-                    d for d in demo_locations if d["label"] == preset_label
-                )
+            if load_preset and chosen and not presets_only:
                 site["address_query"] = chosen["address"]
                 # Auto-trigger geocode by clearing then re-running below
                 site["_preset_address"] = chosen["address"]
                 st.rerun()
 
-    col_input, col_radius = st.columns([3, 1])
-    with col_input:
-        # If a preset was just loaded, prefer its address as the text-input default
-        default = (site.pop("_preset_address", None)
-                    or site.get("address_query") or "Limmatquai 28, 8001 Zürich")
-        address = st.text_input(
-            "Address, city, or postal code", value=default,
-            help="Free-text — e.g. 'Bahnhofstrasse 50, Zürich' or 'Sihlcity'.",
+    if presets_only:
+        st.caption(
+            "🔒 Hosted demo — analysis is limited to the walk-through presets "
+            "(500 m radius; their OpenStreetMap data ships pre-fetched). "
+            "Run the tool locally to analyse any address."
         )
-    with col_radius:
-        radius_m = st.selectbox(
-            "Search radius", options=[250, 500, 1000, 2000],
-            index=[250, 500, 1000, 2000].index(site.get("radius_m", 500)),
-            format_func=lambda x: f"{x} m",
-        )
+        address = chosen["address"] if chosen else site.get("address_query", "")
+        radius_m = 500
+        do_geocode = load_preset and chosen is not None
+    else:
+        col_input, col_radius = st.columns([3, 1])
+        with col_input:
+            # If a preset was just loaded, prefer its address as the text-input default
+            default = (site.pop("_preset_address", None)
+                        or site.get("address_query") or "Limmatquai 28, 8001 Zürich")
+            address = st.text_input(
+                "Address, city, or postal code", value=default,
+                help="Free-text — e.g. 'Bahnhofstrasse 50, Zürich' or 'Sihlcity'.",
+            )
+        with col_radius:
+            radius_m = st.selectbox(
+                "Search radius", options=[250, 500, 1000, 2000],
+                index=[250, 500, 1000, 2000].index(site.get("radius_m", 500)),
+                format_func=lambda x: f"{x} m",
+            )
 
     col_btn, col_iso = st.columns([1, 5])
-    with col_btn:
-        do_geocode = st.button("🔍 Geocode site", type="primary",
-                                use_container_width=True)
+    if not presets_only:
+        with col_btn:
+            do_geocode = st.button("🔍 Geocode site", type="primary",
+                                    use_container_width=True)
     with col_iso:
         show_iso = st.checkbox(
             "10-min walking isochrone (slower first run)",
@@ -266,7 +279,8 @@ def _step1_location(brand: dict, _weights: dict) -> None:
         site["radius_m"] = radius_m
 
     if not site.get("step1_complete"):
-        st.info("Enter an address and click **Geocode site** to continue.")
+        st.info("Pick a preset and click **Analyse site** to continue." if presets_only
+                else "Enter an address and click **Geocode site** to continue.")
         return
 
     st.success(f"📍 **{site['address']}**")
