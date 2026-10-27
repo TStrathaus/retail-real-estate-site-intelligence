@@ -1150,7 +1150,7 @@ def _render_cannibalization(site: dict, brand: dict) -> None:
 # STEP 4 — FOOTFALL & ACCESSIBILITY
 # ===========================================================================
 
-def _step4_footfall(_brand: dict, _weights: dict) -> None:
+def _step4_footfall(brand: dict, _weights: dict) -> None:
     site = st.session_state.site
     st.subheader("Step 4 — Footfall & accessibility")
     st.caption("Amenity-richness Walk Score · ÖV transit accessibility.")
@@ -1211,8 +1211,7 @@ def _step4_footfall(_brand: dict, _weights: dict) -> None:
     # walkability comes from, not just the aggregate number.
     st.markdown("##### 🗺️ Walk amenities · map view")
     st.caption("Every walk-amenity category from the Walk Score, plotted "
-                "on the map. Toggle individual categories via the layer "
-                "control (top-right).")
+                "on the map.")
     with st.spinner("Loading walk amenities..."):
         walk_df = fetch_walk_amenities(site["lat"], site["lon"], 1000)
 
